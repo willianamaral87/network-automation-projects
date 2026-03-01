@@ -1,0 +1,11 @@
+---
+dc_barueri:
+  children:
+    core_baruei:
+      hosts:
+        r1:
+        r2:
+    dist_barueri:
+      hosts:
+        r3:
+        r4:

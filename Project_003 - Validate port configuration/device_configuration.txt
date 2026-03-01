@@ -1,0 +1,58 @@
+description 
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport trunk allowed vlan 10,20,21,30,40,50,60
+
+R1:
+conf t
+interface GigabitEthernet0/1
+ description ACCESS_PORT_TIME_CLOCK_NAME10
+ switchport mode access
+ switchport access vlan 60
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+ duplex half
+ speed 10
+ no negotiation auto
+
+
+R2:
+conf t
+interface GigabitEthernet0/1
+ description TRUNK_DOWNLINK_AR-ROS-OFFICE-SW10
+ switchport trunk allowed vlan 10,20,21,30,40,50,60
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ negotiation auto
+
+interface GigabitEthernet0/2
+ description TRUNK_UPLINK_AR-ROS-OFFICE-SW10
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 10
+ switchport mode trunk
+ negotiation auto
+ 
+R3:
+conf t
+interface GigabitEthernet0/1
+ description ACCESS_POINt_BR-LIM-FINANCE-AP10
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport trunk allowed vlan 151-160
+ switchport trunk native vlan 150
+ 
+interface GigabitEthernet0/2
+ description ACCESS_PORT_PC_NAME10
+ switchport mode access
+ switchport access vlan 20
+ switchport voice vlan 21
+ switchport port-security
+ spanning-tree bpduguard enable
+
+R4:
+conf t
+interface GigabitEthernet0/1
+ spanning-tree bpduguard enable
+ switchport mode access
+ spanning-tree portfast
+ switchport access vlan 50

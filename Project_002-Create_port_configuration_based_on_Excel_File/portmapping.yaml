@@ -1,0 +1,48 @@
+inventory:
+  hostname: sw-teste
+  ports:
+  - interface: g0/1
+    vlan: '10'
+    voice_vlan: '11'
+    description: Device 1
+    vlans_allowed_trunk: null
+  - interface: g0/2
+    vlan: '20'
+    voice_vlan: '21'
+    description: PC1
+    vlans_allowed_trunk: null
+  - interface: g0/3
+    vlan: '50'
+    voice_vlan: '51'
+    description: Laptop10
+    vlans_allowed_trunk: null
+  - interface: g0/4
+    vlan: '40'
+    voice_vlan: '41'
+    description: PC30
+    vlans_allowed_trunk: null
+  - interface: g0/5
+    vlan: '160'
+    voice_vlan: null
+    description: ProtectDevice1
+    vlans_allowed_trunk: null
+  - interface: g0/6
+    vlan: '130'
+    voice_vlan: null
+    description: ProtectDevice2
+    vlans_allowed_trunk: null
+  - interface: g0/22
+    vlan: Trunk - downlink
+    voice_vlan: null
+    description: Link to SW-FINANCE
+    vlans_allowed_trunk: null
+  - interface: g0/23
+    vlan: Trunk - AP
+    voice_vlan: null
+    description: AP-OFFICE
+    vlans_allowed_trunk: null
+  - interface: g0/24
+    vlan: Trunk - uplink
+    voice_vlan: null
+    description: Downlink to Core
+    vlans_allowed_trunk: 5,10,11,20,21,30,31,40,51,50,60,200-210

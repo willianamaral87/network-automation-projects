@@ -1,0 +1,12 @@
+---
+- name: Remove all users except admin and listed users
+  hosts: all
+  gather_facts: False
+  connection: local
+  tasks:
+    - name: Removing all users except the admin and the listed users…
+      ios_user:
+        aggregate:
+        - name: monitoring_tool
+        - name: service_now
+        purge: yes

@@ -1,0 +1,39 @@
+---
+
+trunk_uplink_config:
+  - switchport mode trunk
+  - switchport trunk encapsulation dot1q
+  - switchport trunk allowed vlan 10,20,21,30,40,50,60
+
+trunk_downlink_config:
+  - switchport mode trunk
+  - switchport trunk encapsulation dot1q
+  - spanning-tree guard root
+
+access_point_config:
+-  switchport mode trunk
+-  switchport trunk allowed vlan 150-160
+-  switchport trunk native vlan 150
+-  switchport trunk encapsulation dot1q
+
+access_pc_config:
+-  switchport mode access
+-  switchport access vlan 20
+-  switchport voice vlan 21
+-  switchport port-security
+-  spanning-tree bpduguard enable
+
+access_printer_config:
+-  switchport mode access
+-  switchport access vlan 50
+-  spanning-tree portfast edge
+-  spanning-tree bpduguard enable
+
+access_time_clock_config:
+-  switchport mode access
+-  switchport access vlan 60
+-  spanning-tree portfast edge
+-  spanning-tree bpduguard enable
+-  duplex half
+-  speed 10
+-  no negotiation auto

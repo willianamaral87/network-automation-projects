@@ -1,0 +1,36 @@
+Configuração do switch {{ hostname }}
+
+{% for port in ports %}
+interface {{ port.interface }}
+{% if port.description is defined  and port.description is not none  %}
+description {{ port.description }}
+{% endif -%} 
+
+{# Porta de downlink - permit all vlans #}
+{% if port.vlan is defined and port.vlan|string|upper == "TRUNK - DOWNLINK" -%}    
+switchport mode trunk
+{% elif port.vlan is defined and port.vlan|string|upper == "TRUNK - UPLINK" -%} 
+switchport mode trunk
+{% if port.vlans_allowed_trunk is defined and port.vlans_allowed_trunk|string != "" %}
+switchport trunk allowed vlan {{ port.vlans_allowed_trunk }}
+{%- endif %}    
+{% elif port.vlan is defined and port.vlan|string|upper == "TRUNK - AP" -%} 
+switchport mode trunk
+switchport trunk allowed vlan 200-210
+{# ------- #}
+{% elif port.vlan | int <= 129 %}
+switchport mode access
+switch access vlan {{ port.vlan }}
+{% if port.voice_vlan is defined and port.voice_vlan|string != "" %}
+switchport voice vlan {{ port.voice_vlan }}
+{%- endif %} 
+switchport port-security
+switchport port-security maximum 3
+switchport port-security mac-address sticky
+{% elif port.vlan | int >= 130 and port.vlan | int <=180 %}
+switchport mode access
+switch access vlan {{ port.vlan | int + 100 }}
+{% endif %}
+no shutdown
+!
+{% endfor %} 
