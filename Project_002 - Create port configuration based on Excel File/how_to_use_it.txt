@@ -1,11 +1,13 @@
+# Create a virtual environment
+python3 -m venv venv
 
-# Create a local enviromnent:
-python3 script_converter_xls_to_yaml.py
+# Activate the new local virtual environment
+source venv/bin/activate
 
 # Install dependencies:
 pip3 install -r requirements.txt
 
-# Converter from Excel to YAML: 
+# Script to read the Excel file and convert it to YAML File.
 python3 script_converter_xls_to_yaml.py
 
 # Converter from YAML to Cisco Configuration

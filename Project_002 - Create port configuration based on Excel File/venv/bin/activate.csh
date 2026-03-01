@@ -9,7 +9,7 @@ alias deactivate 'test $?_OLD_VIRTUAL_PATH != 0 && setenv PATH "$_OLD_VIRTUAL_PA
 # Unset irrelevant variables.
 deactivate nondestructive
 
-setenv VIRTUAL_ENV /home/willian/my_projects/Project_002-Create_port_configuration_based_on_Excel_File/venv
+setenv VIRTUAL_ENV '/home/willian/my_projects/Project_002 - Create port configuration based on Excel File/venv'
 
 set _OLD_VIRTUAL_PATH="$PATH"
 setenv PATH "$VIRTUAL_ENV/"bin":$PATH"

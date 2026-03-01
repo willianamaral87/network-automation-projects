@@ -4,17 +4,17 @@ inventory:
   - interface: g0/1
     vlan: '10'
     voice_vlan: '11'
-    description: Device 1
+    description: test1
     vlans_allowed_trunk: null
   - interface: g0/2
     vlan: '20'
     voice_vlan: '21'
-    description: PC1
+    description: test2
     vlans_allowed_trunk: null
   - interface: g0/3
     vlan: '50'
     voice_vlan: '51'
-    description: Laptop10
+    description: teste3
     vlans_allowed_trunk: null
   - interface: g0/4
     vlan: '40'

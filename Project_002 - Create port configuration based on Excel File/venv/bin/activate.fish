@@ -33,7 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV /home/willian/my_projects/Project_002-Create_port_configuration_based_on_Excel_File/venv
+set -gx VIRTUAL_ENV '/home/willian/my_projects/Project_002 - Create port configuration based on Excel File/venv'
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/"bin $PATH

@@ -1,4 +1,6 @@
-#!/home/willian/my_projects/Project_002-Create_port_configuration_based_on_Excel_File/venv/bin/python3
+#!/bin/sh
+'''exec' "/home/willian/my_projects/Project_002 - Create port configuration based on Excel File/venv/bin/python3" "$0" "$@"
+' '''
 # -*- coding: utf-8 -*-
 import re
 import sys
