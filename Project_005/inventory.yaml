@@ -1,0 +1,9 @@
+---
+
+- host: 192.168.101.11
+  username: cisco
+  password: cisco123!
+
+- host: 192.168.101.9
+  username: cisco
+  password: cisco123!
