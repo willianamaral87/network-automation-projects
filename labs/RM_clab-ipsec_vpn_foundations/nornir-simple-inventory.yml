@@ -1,0 +1,16 @@
+---
+r1:
+    username: admin
+    password: admin
+    platform: cisco_iol
+    hostname: 172.20.20.11
+r2:
+    username: admin
+    password: admin
+    platform: cisco_iol
+    hostname: 172.20.20.12
+r3:
+    username: admin
+    password: admin
+    platform: cisco_iol
+    hostname: 172.20.20.13

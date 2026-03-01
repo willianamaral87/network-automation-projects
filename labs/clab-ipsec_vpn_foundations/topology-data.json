@@ -1,0 +1,164 @@
+{
+  "name": "ipsec_vpn_foundations",
+  "type": "clab",
+  "clab": {
+    "config": {
+      "prefix": "clab",
+      "mgmt": {
+        "network": "clab",
+        "bridge": "br-4363693ada72",
+        "ipv4-subnet": "172.20.20.0/24",
+        "ipv4-gw": "172.20.20.1",
+        "ipv6-subnet": "3fff:172:20:20::/64",
+        "ipv6-gw": "3fff:172:20:20::1",
+        "external-access": true
+      }
+    }
+  },
+  "ssh-pub-keys": [],
+  "nodes": {
+    "r1": {
+      "index": "0",
+      "shortname": "r1",
+      "longname": "clab-ipsec_vpn_foundations-r1",
+      "fqdn": "r1.ipsec_vpn_foundations.io",
+      "group": "",
+      "labdir": "/home/willian/my_projects/labs/clab-ipsec_vpn_foundations/r1",
+      "kind": "cisco_iol",
+      "image": "ghcr.io/autonetops/autonetops_labs/cisco_iol:latest",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.11",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::2",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-4363693ada72",
+        "clab-node-group": "",
+        "clab-node-kind": "cisco_iol",
+        "clab-node-lab-dir": "/home/willian/my_projects/labs/clab-ipsec_vpn_foundations/r1",
+        "clab-node-longname": "clab-ipsec_vpn_foundations-r1",
+        "clab-node-name": "r1",
+        "clab-node-type": "",
+        "clab-owner": "willian",
+        "clab-topo-file": "/home/willian/my_projects/labs/lab.clab.yaml",
+        "containerlab": "ipsec_vpn_foundations"
+      },
+      "port-bindings": [
+      ]
+    },
+    "r2": {
+      "index": "1",
+      "shortname": "r2",
+      "longname": "clab-ipsec_vpn_foundations-r2",
+      "fqdn": "r2.ipsec_vpn_foundations.io",
+      "group": "",
+      "labdir": "/home/willian/my_projects/labs/clab-ipsec_vpn_foundations/r2",
+      "kind": "cisco_iol",
+      "image": "ghcr.io/autonetops/autonetops_labs/cisco_iol:latest",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.12",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::3",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-4363693ada72",
+        "clab-node-group": "",
+        "clab-node-kind": "cisco_iol",
+        "clab-node-lab-dir": "/home/willian/my_projects/labs/clab-ipsec_vpn_foundations/r2",
+        "clab-node-longname": "clab-ipsec_vpn_foundations-r2",
+        "clab-node-name": "r2",
+        "clab-node-type": "",
+        "clab-owner": "willian",
+        "clab-topo-file": "/home/willian/my_projects/labs/lab.clab.yaml",
+        "containerlab": "ipsec_vpn_foundations"
+      },
+      "port-bindings": [
+      ]
+    },
+    "r3": {
+      "index": "2",
+      "shortname": "r3",
+      "longname": "clab-ipsec_vpn_foundations-r3",
+      "fqdn": "r3.ipsec_vpn_foundations.io",
+      "group": "",
+      "labdir": "/home/willian/my_projects/labs/clab-ipsec_vpn_foundations/r3",
+      "kind": "cisco_iol",
+      "image": "ghcr.io/autonetops/autonetops_labs/cisco_iol:latest",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.13",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::4",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-4363693ada72",
+        "clab-node-group": "",
+        "clab-node-kind": "cisco_iol",
+        "clab-node-lab-dir": "/home/willian/my_projects/labs/clab-ipsec_vpn_foundations/r3",
+        "clab-node-longname": "clab-ipsec_vpn_foundations-r3",
+        "clab-node-name": "r3",
+        "clab-node-type": "",
+        "clab-owner": "willian",
+        "clab-topo-file": "/home/willian/my_projects/labs/lab.clab.yaml",
+        "containerlab": "ipsec_vpn_foundations"
+      },
+      "port-bindings": [
+      ]
+    }
+  },
+  "links": [
+    {
+      "endpoints": {
+        "a": {
+          "node": "r1",
+          "interface": "eth2",
+          "mac": "aa:c1:ab:d9:86:2d",
+          "peer": "z"
+        },
+        "z": {
+          "node": "r3",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:ab:81:aa",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "r1",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:4a:92:64",
+          "peer": "z"
+        },
+        "z": {
+          "node": "r2",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:5d:b8:95",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "r2",
+          "interface": "eth2",
+          "mac": "aa:c1:ab:6f:81:2b",
+          "peer": "z"
+        },
+        "z": {
+          "node": "r3",
+          "interface": "eth2",
+          "mac": "aa:c1:ab:99:9c:a4",
+          "peer": "a"
+        }
+      }
+    }
+  ]
+}

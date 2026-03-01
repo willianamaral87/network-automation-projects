@@ -1,0 +1,10 @@
+---
+- name: Remove specific user
+  hosts: switches
+  gather_facts: false
+  connection: local
+  tasks:
+    - name: Removing a specific user...
+      ios_user:
+        name: service_now14
+        state: absent

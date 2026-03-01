@@ -1,0 +1,33 @@
+# Execute the Lab:
+Go to the path:
+cd /home/willian/my_projects/labs/
+
+# Destroy the old the lab
+containerlab destroy -t lab.clab.yaml 
+
+# Deploy the lab: 
+containerlab deploy -t lab.clab.yaml
+
+# Create venv
+python3 -m venv  venv
+
+# Access
+source venv/bin/activate
+
+# Install dependencies
+# install ansible
+pip3 install ansible
+
+# install Paramiko
+pip3 install paramiko
+
+# Configure the inventory file on ansible:
+inventory=inventory.ini or inventory=inventory.yaml
+
+# Ansible scripts:
+ansible-playbook pb-create-new-user.yaml
+
+
+
+
+
