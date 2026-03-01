@@ -6,7 +6,7 @@
   tasks:
     - name: Creating new user...
       ios_user:
-         name: service_now
+         name: monitoring_tool3
          configured_password: autonetops
          password_type: secret
          privilege: 15

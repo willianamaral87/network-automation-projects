@@ -6,5 +6,5 @@
   tasks:
     - name: Removing a specific user...
       ios_user:
-        name: service_now14
+        name: monitoring_tool3
         state: absent
