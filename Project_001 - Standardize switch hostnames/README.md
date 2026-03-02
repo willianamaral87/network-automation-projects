@@ -59,7 +59,6 @@ source venv/bin/activate
 ### Install dependencies
 pip3 install netmiko
 
-
 ### Execute the script:
 python3.12 script-change-hostname.py 
 
@@ -90,15 +89,6 @@ error: DNS failure--the hostname you provided was not resolvable in DNS: r6:22
 3) In case of incorrect credentials:
 Authentication to device failed. Check the username and password
 error: Authentication to device failed.
-
-Common causes of this problem are:
-1. Invalid username and password
-2. Incorrect SSH-key file
-3. Connecting to the wrong device
-
-Device settings: cisco_ios r1:22
-
-Authentication failed.
 
 4) Below is the list of supported Cisco devices:
 cisco_apic
