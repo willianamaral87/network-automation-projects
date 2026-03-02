@@ -1,0 +1,21 @@
+# Copyright (c) 2006-2025 Broadcom. All Rights Reserved.
+# Broadcom Confidential. The term "Broadcom" refers to Broadcom Inc.
+# and/or its subsidiaries.
+
+# ******* WARNING - AUTO GENERATED CODE - DO NOT EDIT *******
+
+from typing import ClassVar
+
+from pyVmomi.VmomiSupport import Enum
+
+from pyVmomi.vmodl import DynamicData
+
+class TdxInfo(DynamicData):
+   class TdxState(Enum):
+      initializing: ClassVar['TdxState'] = 'initializing'
+      initialized: ClassVar['TdxState'] = 'initialized'
+      configured: ClassVar['TdxState'] = 'configured'
+      ready: ClassVar['TdxState'] = 'ready'
+
+   tdxState: str
+   numTDXPrivateKeyIDs: int

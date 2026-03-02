@@ -1,0 +1,33 @@
+expected_output = {
+    "cache_type": "Normal (Platform cache)",
+    "cache_size": 10000,
+    "current_entries": 2,
+    "flows_added": 2,
+    "flows_aged": {"total": 0},
+    "entries": {
+        1: {
+            "ipv4_src_addr": "113.1.1.2",
+            "ipv4_dst_addr": "224.0.0.5",
+            "trns_src_port": 0,
+            "trns_dst_port": 0,
+            "ip_tos": "0xC0",
+            "ip_protocol": 89,
+            "tcp_flags": "0x00",
+            "counter_bytes": 96,
+            "counter_pkts_long": 1,
+            "fw_fw_event": 1,
+        },
+        2: {
+            "ipv4_src_addr": "0.0.0.0",
+            "ipv4_dst_addr": "255.255.255.255",
+            "trns_src_port": 68,
+            "trns_dst_port": 67,
+            "ip_tos": "0x00",
+            "ip_protocol": 17,
+            "tcp_flags": "0x00",
+            "counter_bytes": 1380,
+            "counter_pkts_long": 4,
+            "fw_fw_event": 1,
+        },
+    },
+}

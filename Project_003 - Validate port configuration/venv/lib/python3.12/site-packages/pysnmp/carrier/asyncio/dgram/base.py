@@ -1,0 +1,170 @@
+#
+# This file is part of pysnmp software.
+#
+# Copyright (c) 2005-2020, Ilya Etingof <etingof@gmail.com>
+#
+# Copyright (C) 2014, Zebra Technologies
+# Authors: Matt Hooks <me@matthooks.com>
+#          Zachary Lorusso <zlorusso@gmail.com>
+#
+# Copyright (C) 2024, LeXtudio Inc. <support@lextudio.com>
+#
+# License: https://www.pysnmp.com/pysnmp/license.html
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+#
+# * Redistributions of source code must retain the above copyright notice,
+#   this list of conditions and the following disclaimer.
+#
+# * Redistributions in binary form must reproduce the above copyright
+#   notice, this list of conditions and the following disclaimer in the
+#   documentation and/or other materials provided with the distribution.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+# ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+# BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+# CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+# SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+# INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER
+# IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+# ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
+# THE POSSIBILITY OF SUCH DAMAGE.
+#
+
+import sys
+import traceback
+from socket import socket
+from pysnmp.carrier.asyncio.base import AbstractAsyncioTransport
+from pysnmp.carrier.base import AbstractTransportAddress
+from pysnmp.carrier import error
+from pysnmp import debug
+
+import asyncio
+
+
+class DgramAsyncioProtocol(asyncio.DatagramProtocol, AbstractAsyncioTransport):
+    """Base Asyncio datagram Transport, to be used with AsyncioDispatcher"""
+
+    sockFamily: int = 0
+    addressType: type
+    transport: "asyncio.DatagramTransport | None" = None
+    loop: asyncio.AbstractEventLoop
+
+    def __init__(
+        self, sock=None, sockMap=None, loop: "asyncio.AbstractEventLoop | None" = None
+    ):
+        self._writeQ = []
+        self._lport = None
+        if loop is None:
+            loop = asyncio.get_event_loop()
+        self.loop = loop
+
+    def datagram_received(self, datagram, transportAddress: AbstractTransportAddress):
+        if self._cbFun is None:
+            raise error.CarrierError("Unable to call cbFun")
+        else:
+            self.loop.call_soon(self._cbFun, self, transportAddress, datagram)
+
+    def connection_made(self, transport: asyncio.DatagramTransport):
+        self.transport = transport
+        debug.logger & debug.flagIO and debug.logger("connection_made: invoked")
+        while self._writeQ:
+            outgoingMessage, transportAddress = self._writeQ.pop(0)
+            debug.logger & debug.flagIO and debug.logger(
+                "connection_made: transportAddress %r outgoingMessage %s"
+                % (transportAddress, debug.hexdump(outgoingMessage))
+            )
+            try:
+                self.transport.sendto(
+                    outgoingMessage, self.normalizeAddress(transportAddress)  # type: ignore
+                )
+            except Exception:
+                raise error.CarrierError(
+                    ";".join(traceback.format_exception(*sys.exc_info()))
+                )
+
+    def connection_lost(self, exc):
+        debug.logger & debug.flagIO and debug.logger("connection_lost: invoked")
+
+    # AbstractAsyncioTransport API
+
+    def openClientMode(
+        self, iface: "tuple[str, int] | None" = None, allow_broadcast: bool = False
+    ):
+        try:
+            c = self.loop.create_datagram_endpoint(
+                lambda: self,
+                local_addr=iface,
+                family=self.sockFamily,
+                allow_broadcast=allow_broadcast,
+            )
+            # Avoid deprecation warning for asyncio.async()
+            self._lport = asyncio.ensure_future(c)
+
+        except Exception:
+            raise error.CarrierError(
+                ";".join(traceback.format_exception(*sys.exc_info()))
+            )
+        return self
+
+    def openServerMode(
+        self, iface: "tuple[str, int] | None" = None, sock: "socket | None" = None
+    ):
+        if iface is None and sock is None:
+            raise error.CarrierError("either iface or sock is required")
+
+        try:
+            if sock:
+                c = self.loop.create_datagram_endpoint(lambda: self, sock=sock)
+            else:
+                c = self.loop.create_datagram_endpoint(
+                    lambda: self, local_addr=iface, family=self.sockFamily
+                )
+            # Avoid deprecation warning for asyncio.async()
+            self._lport = asyncio.ensure_future(c)
+        except Exception:
+            raise error.CarrierError(
+                ";".join(traceback.format_exception(*sys.exc_info()))
+            )
+        return self
+
+    def closeTransport(self):
+        if self._lport is not None:
+            self._lport.cancel()
+        if self.transport is not None:
+            self.transport.close()
+        AbstractAsyncioTransport.closeTransport(self)
+
+    def sendMessage(
+        self,
+        outgoingMessage,
+        transportAddress: "AbstractTransportAddress | tuple[str, int]",
+    ):
+        debug.logger & debug.flagIO and debug.logger(
+            "sendMessage: {} transportAddress {!r} outgoingMessage {}".format(
+                (self.transport is None and "queuing" or "sending"),
+                transportAddress,
+                debug.hexdump(outgoingMessage),
+            )
+        )
+        if self.transport is None:
+            self._writeQ.append((outgoingMessage, transportAddress))
+        else:
+            try:
+                self.transport.sendto(
+                    outgoingMessage, self.normalizeAddress(transportAddress)  # type: ignore
+                )
+            except Exception:
+                raise error.CarrierError(
+                    ";".join(traceback.format_exception(*sys.exc_info()))
+                )
+
+    def normalizeAddress(
+        self, transportAddress: "AbstractTransportAddress | tuple[str, int]"
+    ):
+        if not isinstance(transportAddress, self.addressType):
+            transportAddress = self.addressType(transportAddress)
+        return transportAddress

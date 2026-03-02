@@ -1,0 +1,93 @@
+# Python
+import unittest
+
+# Ats
+from pyats.topology import Device
+from unittest.mock import Mock
+
+# Genie
+from genie.libs.ops.rip.iosxr.rip import Rip
+from genie.libs.ops.rip.iosxr.tests.rip_output import RipOutput
+from genie.libs.parser.iosxr.show_vrf import ShowVrfAllDetail
+
+outputs = {}
+outputs.update({'show rip': RipOutput.show_rip})
+outputs.update({'show rip vrf VRF1': RipOutput.show_rip_vrf1})
+outputs.update({'show rip statistics': RipOutput.show_rip_statistics})
+outputs.update({'show rip vrf VRF1 statistics': RipOutput.show_rip_vrf1_statistics})
+outputs.update({'show rip database': RipOutput.show_rip_database})
+outputs.update({'show rip vrf VRF1 database': RipOutput.show_rip_vrf1_database})
+outputs.update({'show rip interface': RipOutput.show_rip_interface})
+outputs.update({'show rip vrf VRF1 interface': RipOutput.show_rip_vrf1_interface})
+
+
+def mapper(key, **kwargs):
+    return outputs[key]
+
+
+class test_rip_all(unittest.TestCase):
+
+    def setUp(self):
+        self.device = Device(name='aDevice')
+        self.device.os = 'iosxr'
+        self.device.mapping = {}
+        self.device.mapping['cli'] = 'cli'
+                # Create a mock connection to get output for parsing
+        self.device_connection = Mock(device=self.device)
+        self.device.connectionmgr.connections['cli'] = self.device_connection
+        # Set outputs
+        self.device_connection.execute.side_effect = mapper
+
+    def test_full_rip(self):
+        f = Rip(device=self.device)
+        f.maker.outputs[ShowVrfAllDetail] = {'': RipOutput.show_vrf_all_detail}
+
+
+
+        f.learn()
+
+        self.maxDiff = None
+        self.assertEqual(f.info, RipOutput.rip_ops_output)
+
+    def test_empty_output(self):
+        f = Rip(device=self.device)
+
+        # Get outputs
+        f.maker.outputs[ShowVrfAllDetail] = {'': {}}
+
+        outputs.update({'show rip': ''})
+        outputs.update({'show rip vrf VRF1': ''})
+        outputs.update({'show rip statistics': ''})
+        outputs.update({'show rip vrf VRF1 statistics': ''})
+        outputs.update({'show rip database': ''})
+        outputs.update({'show rip vrf VRF1 database': ''})
+        outputs.update({'show rip interface': ''})
+        outputs.update({'show rip vrf VRF1 interface': ''})
+
+
+
+        # Learn the feature
+        f.learn()
+
+        outputs.update({'show rip': RipOutput.show_rip})
+        outputs.update({'show rip vrf VRF1':
+                        RipOutput.show_rip_vrf1})
+        outputs.update({'show rip statistics':
+                        RipOutput.show_rip_statistics})
+        outputs.update({'show rip vrf VRF1 statistics':
+                        RipOutput.show_rip_vrf1_statistics})
+        outputs.update({'show rip database':
+                        RipOutput.show_rip_database})
+        outputs.update({'show rip vrf VRF1 database':
+                        RipOutput.show_rip_vrf1_database})
+        outputs.update({'show rip interface':
+                        RipOutput.show_rip_interface})
+        outputs.update({'show rip vrf VRF1 interface':
+                        RipOutput.show_rip_vrf1_interface})
+
+        with self.assertRaises(AttributeError):
+            f.info['vrf']
+
+
+if __name__ == '__main__':
+    unittest.main()
