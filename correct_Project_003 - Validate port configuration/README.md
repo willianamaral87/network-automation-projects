@@ -57,7 +57,7 @@ pip3 install netmiko
    ```bash
    python3 check_iface_config.py
 
-
+   
 ## Notes:
 Use a layer 2 image.
 
