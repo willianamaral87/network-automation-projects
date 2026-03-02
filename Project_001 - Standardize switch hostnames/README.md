@@ -4,8 +4,7 @@
 The objective of this lab is to standardize hostname configuration across switches and routers from different vendors (multivendor environments) using the Netmiko library to automate SSH connections and apply changes in a consistent and secure manner.
 
 The suggested hostname standardization in this lab follows the convention:
-
-"<SITE>-<AREA>-<TYPE-OF-DEVICE><IP>", where:
+< SITE >-< AREA >-< TYPE-OF-DEVICE >< IP >, where:
 - SITE: device location;
 - AREA: internal area within the location;
 - TYPE-OF-DEVICE: device type, such as switch or router;
