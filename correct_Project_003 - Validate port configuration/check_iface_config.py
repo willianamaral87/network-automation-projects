@@ -8,11 +8,8 @@ from netmiko import ConnectHandler
 # ReadTimeout: occurs when the device does not respond in time during data reading.
 from netmiko.exceptions import NetmikoTimeoutException, NetmikoAuthenticationException, ReadTimeout
 
-
 # Import the function to open and save files.
 from helpers import read_yaml, save_file_append
-
-
 
 # Import the module that validates the company naming convention.
 from validate_name_convention import (
@@ -102,12 +99,8 @@ access_printer_config = port_template['access_printer_config']
 access_time_clock_config = port_template['access_time_clock_config']
 
 #####################################################
-
-
-
 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 filename = f"output/output_{timestamp}.txt"
-
 
 # Connect to each device
 for device in devices:

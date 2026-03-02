@@ -1,8 +1,6 @@
 # Import YAML
 import yaml
 
-
-
 def read_yaml(path):
     with open(path, 'r') as f:
         device_list = yaml.safe_load(f)

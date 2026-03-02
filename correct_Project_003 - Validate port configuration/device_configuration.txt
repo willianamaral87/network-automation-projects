@@ -15,7 +15,6 @@ interface GigabitEthernet0/1
  speed 10
  no negotiation auto
 
-
 R2:
 conf t
 interface GigabitEthernet0/1

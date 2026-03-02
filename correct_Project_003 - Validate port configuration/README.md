@@ -1,7 +1,16 @@
-# Validar a configuração de porta de switch.
-Motivação: Criar um script para realizar a validação de configuração de porta de switch.
+# Validate switch port configuration
+Motivation: Create a script to validate the configuration of switch ports.
 
-Esta entrega consiste em refatorar a atividade anterior, onde a mesma não estava escalável.
+This project consists of the following files:
+
+- **check_iface_config.py**: main script.  
+- **device_configuration**: suggested device configurations.  
+- **helper.py**: responsible for reading and writing text files.  
+- **inventory.yaml**: device inventory.  
+- **port_template.yaml**: contains the configuration template for devices. This file defines the rules for commands that must be set on each interface.  
+- **requirements.txt**: list of dependencies.  
+- **validate_name_convention.py**: Python module that validates the naming convention of interface descriptions.
+
 
 Este trabalho consiste os arquivos abaixo, sendo eles:
 - check_iface_config.py: script principal
