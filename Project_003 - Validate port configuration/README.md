@@ -33,10 +33,10 @@ Go to the path:
 cd /home/willian/my_projects/labs/
 
 ### Destroy the old the lab
-containerlab destroy -t lab.clab.yaml 
+containerlab destroy -t lab_l2.clab.yaml 
 
 ### Deploy the lab: 
-containerlab deploy -t lab.clab.yaml
+containerlab deploy -t lab_l2.clab.yaml 
 
 ### Create a new environment
 python3 -m venv  venv
@@ -44,14 +44,23 @@ python3 -m venv  venv
 ### Activate the virtual environment
 source venv/bin/activate
 
-### Install dependencies
-pip3 install netmiko
-
 **Execution:**
 1. Create the `output` directory.
-2. Install the dependencies listed in `requirements.txt`.  
+2. Install the dependencies listed in `requirements.txt` using pip3:
+pip install genie
+
+pip3 install netmiko
+
 3. Load the port configurations from the `device_configuration` file into each device.
   
 3. Run the script:  
    ```bash
    python3 check_iface_config.py
+
+   
+## Notes:
+Use a layer 2 image.
+
+Correct SSH:
+  ```bash
+ssh -oKexAlgorithms=+diffie-hellman-group14-sha1 -oHostKeyAlgorithms=+ssh-rsa admin@172.20.20.11
