@@ -1,0 +1,34 @@
+---
+
+- id: r1
+  netmiko_conn:
+    host: 172.20.20.11
+    username: admin
+    password: autonetops
+    device_type: cisco_ios
+    session_log: r1_session_log.txt
+    session_log_file_mode: append
+  extra:
+    new_hostname: SPO-OFFICE-SW11111111111111
+
+- id: r2
+  netmiko_conn:
+    host: 172.20.20.12
+    username: admin
+    password: autonetops
+    device_type: cisco_ios
+    session_log: r2_session_log.txt
+    session_log_file_mode: append
+  extra:
+    new_hostname: RJO-PRODUCAO-SW1211111111111
+
+- id: r3
+  netmiko_conn:
+    host: 172.20.20.13
+    username: admin
+    password: autonetops
+    device_type: cisco_ios
+    session_log: r3_session_log.txt
+    session_log_file_mode: append
+  extra:
+    new_hostname: CPS-RH-SW131111111111111111
