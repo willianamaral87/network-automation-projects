@@ -24,11 +24,34 @@ Execução:
 
 
 
+
+
+
+
+## Prepare the environment:
+Go to the path:
+cd /home/willian/my_projects/labs/
+
+### Destroy the old the lab
+containerlab destroy -t lab.clab.yaml 
+
+### Deploy the lab: 
+containerlab deploy -t lab.clab.yaml
+
+### Create a new environment
+python3 -m venv  venv
+
+### Activate the virtual environment
+source venv/bin/activate
+
+### Install dependencies
+pip3 install netmiko
+
 **Execution:**
-1. Use the lab: [https://autonetops.com/labs/stp-root-guard/](https://autonetops.com/labs/stp-root-guard/) or a local lab using Containerlab.  
-2. Load the port configurations using the `device_configuration` file.  
-3. Install the dependencies listed in `requirements.txt`.  
-4. Create the `output` directory.  
-5. Run the script:  
+1. Create the `output` directory.
+2. Install the dependencies listed in `requirements.txt`.  
+3. Load the port configurations from the `device_configuration` file into each device.
+  
+3. Run the script:  
    ```bash
    python3 check_iface_config.py
