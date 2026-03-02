@@ -9,7 +9,7 @@
     session_log: r1_session_log.txt
     session_log_file_mode: append
   extra:
-    new_hostname: SPO-OFFICE-SW11111111111111
+    new_hostname: SPO-OFFICE-SW11
 
 - id: r2
   netmiko_conn:
@@ -20,8 +20,7 @@
     session_log: r2_session_log.txt
     session_log_file_mode: append
   extra:
-    new_hostname: RJO-PRODUCAO-SW1211111111111
-
+    new_hostname: RJO-PRODUCAO-SW12
 - id: r3
   netmiko_conn:
     host: 172.20.20.13
@@ -31,4 +30,4 @@
     session_log: r3_session_log.txt
     session_log_file_mode: append
   extra:
-    new_hostname: CPS-RH-SW131111111111111111
+    new_hostname: CPS-RH-SW14
