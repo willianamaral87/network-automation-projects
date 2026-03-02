@@ -1,6 +1,7 @@
 # Standardize Hostname Configuration in Multivendor Network Devices
 
-## Motivation: The objective of this lab is to standardize hostname configuration across switches and routers from different vendors (multivendor environments) using the Netmiko library to automate SSH connections and apply changes in a consistent and secure manner.
+## Motivation: 
+The objective of this lab is to standardize hostname configuration across switches and routers from different vendors (multivendor environments) using the Netmiko library to automate SSH connections and apply changes in a consistent and secure manner.
 
 The suggested hostname standardization in this lab follows the convention:
 <SITE>-<AREA>-<TYPE-OF-DEVICE><IP>, where:
@@ -15,19 +16,19 @@ To execute the hostname change script, three files are required:
 1) script-change-hostname.py: Python script responsible for applying the hostname change on the devices.
 
 2) inventory_netmiko.yaml:
-- Arquivo de inventário que contém a lista de dispositivos e suas informações de conexão.
-- Estrutura:
-- id: # Identificação do dispositivo
-  netmiko_conn:
+  - Arquivo de inventário que contém a lista de dispositivos e suas informações de conexão.
+  - Estrutura:
+  - id: # Identificação do dispositivo
+    netmiko_conn:
   
-    host: r1                          # Hostname ou endereço IP do dispositivo
-    username: admin                   # Username
-    password: autonetops              # Password
-    device_type: cisco_ios            # Device type/vendor
-    session_log: r1_session_log.txt   # Execution log file
-    session_log_file_mode: append     # Append mode to avoid overwriting previous logs
-  extra:
-    new_hostname: SPO-OFFICE-SW11     # New hostname to be applied
+      host: r1                          # Hostname ou endereço IP do dispositivo
+      username: admin                   # Username
+      password: autonetops              # Password
+      device_type: cisco_ios            # Device type/vendor
+      session_log: r1_session_log.txt   # Execution log file
+      session_log_file_mode: append     # Append mode to avoid overwriting previous logs
+    extra:
+      new_hostname: SPO-OFFICE-SW11     # New hostname to be applied
 
 Note: The log file (session_log) records only the commands executed on the device; it does not capture login errors or hostname resolution issues.
 
