@@ -10,4 +10,8 @@ Save the file as switch-enterasys.txt
 Access the password vault and copy the admin and PSK passwords.
 Fill in the passwords in the variables of the main script.
 
-
+## Step 3:
+Execute the script: 
+```bash
+python3 convert_enterasys_to_huawei.py
+```
