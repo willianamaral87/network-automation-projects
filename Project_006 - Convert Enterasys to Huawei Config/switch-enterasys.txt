@@ -65,7 +65,7 @@ set igmpsnooping adminmode enable
 !
 
 #ip
-set ip address 10.135.247.86 mask 255.255.255.192 gateway 10.135.247.126
+set ip address 10.11.12.82 mask 255.255.255.192 gateway 10.11.12.83
 !
 
 #lacp
@@ -397,8 +397,8 @@ set ssh enabled
 
 #system
 set switch member 1 2
-set system name "SW13PNG"
-set system location "AreaT_BRA_PR_Paranagua_Rocio_PV3"
+set system name "hostname"
+set system location "Location"
 set system contact "port-security"
 set system login admin super-user enable password :0004654dac8c7337002ca4630a148b01a261954b0f91321d3b627365041b2253836799334928db079c:
 set system login ro read-only enable password :01ba2eaba870658751488406da104675de04e5cc8034bb5aaf45a87f8558d947134c636a2c227e1e62:
