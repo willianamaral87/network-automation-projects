@@ -21,6 +21,7 @@ The validation is strictly based on each port’s description. In other words, t
 ### Destroy the old the lab
    ```bash
         containerlab destroy -t lab_l2.clab.yaml 
+```
 
 ### Deploy the lab: 
 containerlab deploy -t lab_l2.clab.yaml 
