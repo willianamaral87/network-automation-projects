@@ -45,11 +45,13 @@ source venv/bin/activate
   ```bash
   cd /home/willian/my_projects/Project_003 - Validate port configuration
   ``` 
-  
-2. Install the dependencies listed in `requirements.txt` using pip3:
-pip install genie
 
-pip3 install netmiko
+2. Install the dependencies listed in `requirements.txt` using pip3:
+  ```bash
+pip install netmiko
+pip install genie
+pip install pyats
+  ``` 
 
 3. Load the port configurations from the `device_configuration` file into each device.
   

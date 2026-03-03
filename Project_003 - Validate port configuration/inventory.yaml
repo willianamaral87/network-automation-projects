@@ -1,10 +1,5 @@
 ---
 
-- host: 172.20.20.11
-  username: admin
-  password: autonetops
-  device_type: cisco_ios
-  
 - host: 172.20.20.12
   username: admin
   password: autonetops
