@@ -15,3 +15,6 @@ Execute the script:
 ```bash
 python3 convert_enterasys_to_huawei.py
 ```
+
+## Notes
+The sensitive information was removed or replaced.
