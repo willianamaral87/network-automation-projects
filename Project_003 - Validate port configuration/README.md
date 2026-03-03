@@ -39,9 +39,13 @@ python3 -m venv  venv
   ```bash
 source venv/bin/activate
   ```
-  
+
 **Execution:**
-1. Create the `output` directory.
+1. Create the `output` directory inside the path:
+  ```bash
+  cd /home/willian/my_projects/Project_003 - Validate port configuration
+  ``` 
+  
 2. Install the dependencies listed in `requirements.txt` using pip3:
 pip install genie
 
