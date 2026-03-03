@@ -1,0 +1,18 @@
+
+Device : 172.20.20.12 - interface GigabitEthernet0/0
+!---> The description format or port type does not match the existing template port configuration.
+!---> Check the configuration port.
+
+************************************************************
+
+Device : 172.20.20.12 - interface GigabitEthernet0/1
+!---> The description format or port type does not match the existing template port configuration.
+!---> Check the configuration port.
+
+************************************************************
+
+Device : 172.20.20.12 - interface GigabitEthernet0/2
+!---> The description format or port type does not match the existing template port configuration.
+!---> Check the configuration port.
+
+************************************************************
