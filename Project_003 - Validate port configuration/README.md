@@ -31,11 +31,15 @@ containerlab deploy -t lab_l2.clab.yaml
   ```
 
 ### Create a new environment
+  ```bash
 python3 -m venv  venv
+  ```
 
 ### Activate the virtual environment
+  ```bash
 source venv/bin/activate
-
+  ```
+  
 **Execution:**
 1. Create the `output` directory.
 2. Install the dependencies listed in `requirements.txt` using pip3:
