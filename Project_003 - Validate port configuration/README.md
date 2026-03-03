@@ -14,9 +14,9 @@ This project consists of the following files:
 The validation is strictly based on each port’s description. In other words, the description configured on each port is used to validate the configuration of the other commands on that port.
 
 ## Prepare the environment:
-Go to the path:
-cd /home/willian/my_projects/labs/
-Use a layer 2 image.
+- Go to the path:
+  - cd /home/willian/my_projects/labs/
+- Use a layer 2 image.
 
 ### Destroy the old the lab
 containerlab destroy -t lab_l2.clab.yaml 
