@@ -10,4 +10,6 @@ Feel free to:
 - Contribute with improvements  
 - Ask any questions you have  
 
+I am **constantly working to update this page** and improve the projects.  
+
 Thank you for visiting! 🌟
