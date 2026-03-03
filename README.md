@@ -1,6 +1,6 @@
 # Welcome to My GitHub 🚀
 
-Hi there! 👋 I’m Willian, and over the past **5 years** I’ve been developing projects in **Python**, **network automation** using **Ansible**, **Netmiko**, and **YANG + RESTCONF**.
+Hi there! 👋 I’m Willian, and over the past **5 years** I’ve been developing projects in **Python**, **Network Automation** using **Ansible**, **Netmiko**, and **YANG + RESTCONF**.
 
 I’m sharing all my code here so that it can be **used, studied, and improved** by anyone interested.
 
