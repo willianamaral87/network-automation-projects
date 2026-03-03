@@ -13,24 +13,10 @@ This project consists of the following files:
 
 The validation is strictly based on each port’s description. In other words, the description configured on each port is used to validate the configuration of the other commands on that port.
 
-Execução:
-- Utilizar o laboratório : https://autonetops.com/labs/stp-root-guard/ or local lab using containerlab
-- Carregar as configuraçções das portas. Utilizar o arquivo device_configuration.
-- Instalar as dependências Arquivo requirements.
-- Criar o diretório output
-- Executar o arquivo: python3 check_iface_config.py
-- Será exibido o output no terminal e será criado um arquivo para cada execução - baseado na data e hora da execução. Esta saída deve apresentar se a configuração está ok ou a divergência da configuração (o que precisa ser adicionado ou removido).
-
-
-
-
-
-
-
-
 ## Prepare the environment:
 Go to the path:
 cd /home/willian/my_projects/labs/
+Use a layer 2 image.
 
 ### Destroy the old the lab
 containerlab destroy -t lab_l2.clab.yaml 
@@ -59,7 +45,7 @@ pip3 install netmiko
 
    
 ## Notes:
-Use a layer 2 image.
+
 
 Correct SSH:
   ```bash
