@@ -15,7 +15,9 @@ The validation is strictly based on each port’s description. In other words, t
 
 ## Prepare the environment:
 - Go to the path:
-  - cd /home/willian/my_projects/labs/
+  ```bash 
+  cd /home/willian/my_projects/labs/
+  ```
 - Use a layer 2 image.
 
 ### Destroy the old the lab
