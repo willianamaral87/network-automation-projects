@@ -23,10 +23,12 @@ The validation is strictly based on each port’s description. In other words, t
 ### Destroy the old the lab
   ```bash
   containerlab destroy -t lab_l2.clab.yaml 
-  ```
+
 
 ### Deploy the lab: 
+  ```bash
 containerlab deploy -t lab_l2.clab.yaml 
+  ```
 
 ### Create a new environment
 python3 -m venv  venv
