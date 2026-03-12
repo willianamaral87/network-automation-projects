@@ -22,6 +22,19 @@ It accepts subnet masks in two formats:
 - CIDR notation → `192.168.1.10/24`
 - Dotted decimal → `192.168.1.10/255.255.255.0`
 
+### Subnetting
+The script can also **split a network into smaller subnets** by providing a second argument (`new_prefix`).
+
+Example:
+- Split `192.168.0.0/23` into `/24` subnets.
+
+Output:
+```
+192.168.0.0/24
+192.168.1.0/24
+```
+
+
 ## Requirements
 
 - Python 3.x
@@ -37,5 +50,13 @@ No external packages are required.
 
 Run the script from the terminal and pass the IP address as an argument.
 
+### Basic usage
 ```bash
 python3 ip_calc.py 192.168.1.10/24
+```
+
+### Subnetting 
+
+```
+python3 ip_calc.py 192.168.0.0/23 24
+```
