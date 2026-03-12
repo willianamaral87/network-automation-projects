@@ -16,6 +16,7 @@ The script calculates:
 - Total number of addresses
 - Number of valid host addresses
 - Network range
+- Subnetting
 
 It accepts subnet masks in two formats:
 
@@ -33,7 +34,6 @@ Output:
 192.168.0.0/24
 192.168.1.0/24
 ```
-
 
 ## Requirements
 
@@ -60,3 +60,6 @@ python3 ip_calc.py 192.168.1.10/24
 ```
 python3 ip_calc.py 192.168.0.0/23 24
 ```
+
+## Notes
+- Uses Python's built-in `ipaddress` module for validation and calculations.
