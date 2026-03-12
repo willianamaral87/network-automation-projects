@@ -28,6 +28,7 @@ The script can also **split a network into smaller subnets** by providing a seco
 
 Example:
 - Split `192.168.0.0/23` into `/24` subnets.
+- python3 ip_calc_v2.py 192.168.0.0/23 24
 
 Output:
 ```
@@ -52,7 +53,7 @@ Run the script from the terminal and pass the IP address as an argument.
 
 ### Basic usage
 ```bash
-python3 ip_calc.py 192.168.1.10/24
+python3 ip_calc.py 192.168.0.0/24
 ```
 
 ### Subnetting 
