@@ -15,4 +15,4 @@ The script will connect to each ASA device and perform the configuration backup.
 
 Each context will be saved in a separate file.
 
-The filename is structed as: bkp-asa-<IP>-<context-name>
+The filename is structed as: bkp-asa-<IP>- <context-name>
