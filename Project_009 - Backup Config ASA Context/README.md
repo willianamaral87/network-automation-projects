@@ -5,7 +5,7 @@ This project uses 3 files:
 - exec_bkp_config_asa_context.py : erforms the backup configuration for ASA devices with contexts.
 - exec_bkp_config_asa.py : performs the backup configuration for ASA devices without contexts.
 
-For ASA devices configured with contexts, execute the exec_bkp_config_asa_context.py file. 
+For ASA devices configured with contexts, execute the exec_bkp_config_asa_context.py file:
 - python3 exec_bkp_config_asa_context.py
   
 The script will connect to each ASA device and perform the configuration backup. 
