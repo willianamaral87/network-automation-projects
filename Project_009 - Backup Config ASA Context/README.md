@@ -14,3 +14,5 @@ For ASA devices configured with contexts, execute the exec_bkp_config_asa_contex
 The script will connect to each ASA device and perform the configuration backup. 
 
 Each context will be saved in a separate file.
+
+To create and test these scripts, a laboratory environment was used in EVE-NG with a Debian machine and one ASA configured with the following contexts: admin, system, C1, C2, and C3. As a result, 5 backup files were generated.
