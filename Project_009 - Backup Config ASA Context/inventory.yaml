@@ -1,0 +1,6 @@
+---
+
+- host: 192.168.1.206
+  username: willian
+  password: willian2026
+  device_type: cisco_asa

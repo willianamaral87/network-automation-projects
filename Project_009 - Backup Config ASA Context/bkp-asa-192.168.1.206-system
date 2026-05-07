@@ -1,0 +1,72 @@
+: Saved
+:
+ASA Version 8.4(2) <system>
+!
+terminal width 511
+hostname FWASA
+enable password 8Ry2YjIyt7RRXU24 encrypted
+no mac-address auto
+!
+interface Ethernet0
+!
+interface Ethernet1
+ shutdown
+!
+interface Ethernet2
+ shutdown
+!
+interface Ethernet3
+ shutdown
+!
+class default
+  limit-resource All 0
+  limit-resource ASDM 5
+  limit-resource SSH 5
+  limit-resource Telnet 5
+!
+
+ftp mode passive
+pager lines 24
+no failover
+no asdm history enable
+arp timeout 14400
+console timeout 0
+
+admin-context C1
+context C1
+  allocate-interface Ethernet0 
+  allocate-interface Ethernet1 
+  config-url disk0:/c1.cfg
+!
+
+context admin
+  allocate-interface Ethernet0 
+  config-url disk0:/admin.cfg
+!
+
+context c2
+  allocate-interface Ethernet3 
+  config-url disk0:/c2.cfg
+!
+
+context c3
+  config-url disk0:/c3.cfg
+!
+
+username willian password 4DM9/P9CfqLefqrn encrypted privilege 15
+prompt hostname context 
+call-home reporting anonymous prompt 1
+call-home
+ profile CiscoTAC-1
+  no active
+  destination address http https://tools.cisco.com/its/service/oddce/services/DDCEService
+  destination address email callhome@cisco.com
+  destination transport-method http
+  subscribe-to-alert-group diagnostic
+  subscribe-to-alert-group environment
+  subscribe-to-alert-group inventory periodic monthly
+  subscribe-to-alert-group configuration periodic monthly
+  subscribe-to-alert-group telemetry periodic daily
+crashinfo save disable
+Cryptochecksum:e582f378c8db59bfa5fd8a45b357006f
+: end
