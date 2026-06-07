@@ -8,3 +8,6 @@ def read_yaml(path):
 def save_file(path, data):
     with open(path,'w') as f:
         f.write(data)
+
+#########################################
+print('teste')
