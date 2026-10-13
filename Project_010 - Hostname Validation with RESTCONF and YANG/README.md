@@ -128,7 +128,7 @@ The number part of the pattern, `([1-9][0-9]?|1[0-9]{2}|2[0-4][0-9]|25[0-4])`, a
 ## Project structure
 
 ```
-restconf_and_yang/
+Project_010 - Hostname Validation with RESTCONF and YANG/
 ├── hostname_manager.py      # Main menu and workflow
 ├── restconf.py                 # restconf_get / restconf_patch helpers
 ├── helpers.py                  # read_excel / save_excel helpers
@@ -157,8 +157,8 @@ restconf
 ## Installation
 
 ```bash
-git clone <your-repo-url>
-cd restconf_and_yang
+git clone https://github.com/willianamaral87/network-automation-projects.git
+cd "network-automation-projects/Project_010 - Hostname Validation with RESTCONF and YANG"
 
 python3 -m venv venv
 source venv/bin/activate
