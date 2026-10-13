@@ -250,4 +250,4 @@ The tool was tested against the **Cisco DevNet IOS-XE always-on sandbox**.
 **Willian Amaral**
 Network Automation | Cisco | Python | RESTCONF/YANG
 
-[LinkedIn](https://www.linkedin.com/in/your-profile) · [GitHub](https://github.com/your-user)
+[LinkedIn](https://www.linkedin.com/in/wdamaral/)
