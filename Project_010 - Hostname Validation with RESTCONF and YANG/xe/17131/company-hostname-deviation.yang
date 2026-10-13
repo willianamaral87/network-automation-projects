@@ -1,0 +1,33 @@
+module company-hostname-deviation {
+  yang-version 1.1;
+  namespace "urn:company:hostname-deviation";
+  prefix chd;
+
+  import Cisco-IOS-XE-native {
+    prefix ios;
+  }
+
+  description
+    "Adds the company hostname standard to the Cisco IOS-XE hostname leaf.
+
+     Format: SITE-TYPE_OF_DEVICE-HOSTNAME-IP   (e.g. VAR-SW-LOCATION-22)
+       SITE   -> exactly 3 uppercase letters (Site code)
+       TYPE   -> SW (Switch), RT (Router) or FW (Firewall)
+       NAME   -> 2 to 12 uppercase letters
+       NUMBER -> 1 to 254, no leading zeros";
+
+  deviation "/ios:native/ios:hostname" {
+    deviate replace {
+      type string {
+        // YANG patterns always match the whole string (no ^ or $)
+        pattern '[A-Z]{3}-(SW|RT|FW)-[A-Z]{2,12}-'
+              + '([1-9][0-9]?|1[0-9]{2}|2[0-4][0-9]|25[0-4])' {
+          error-message
+            "Hostname must follow SITE-TYPE_OF_DEVICE-HOSTNAME-IP, "
+            + "e.g. VAR-SW-LOCATION-22";
+        }
+      }
+    }
+  }
+}
+

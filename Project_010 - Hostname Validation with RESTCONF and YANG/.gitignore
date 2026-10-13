@@ -1,0 +1,15 @@
+venv/
+venv*/
+__pycache__/
+*.pyc
+*.xlsx
+!inventory.xlsx
+payload.json
+hostname.json
+.~lock.*
+*:sec.endpointdlp
+NOTES
+delete/
+.env
+group_vars/
+*:PG$Secure
