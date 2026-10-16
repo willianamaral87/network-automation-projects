@@ -11,7 +11,7 @@ A Python tool that collects, validates and changes hostnames on Cisco IOS-XE swi
 Renaming dozens of switches by hand is slow and error-prone. A single typo in a hostname can break monitoring, documentation and naming conventions. This project:
 
 - Reads the target devices and new hostnames from an Excel inventory
-- Validates every hostname **offline** with `yanglint`, using the official Cisco IOS-XE YANG model and a custom **YANG deviation** that enforces the company naming pattern
+- Validates every hostname **offline - The validation runs locally on the machine (your laptop, a jump server, or a CI pipeline), without interacting with the switch itself.** with `yanglint`, using the official Cisco IOS-XE YANG model and a custom **YANG deviation** that enforces the company naming pattern
 - Applies the change through RESTCONF only if **all** hostnames are valid
 - Reads the hostname back from each device to confirm the change
 
@@ -101,7 +101,7 @@ deviation "/ios:native/ios:hostname" {
       pattern '[A-Z]{3}-(SW|RT|FW)-[A-Z]{2,12}-'
             + '([1-9][0-9]?|1[0-9]{2}|2[0-4][0-9]|25[0-4])' {
         error-message
-          "Hostname must follow SITE-TYPE_OF_DEVICE-HOSTNAME-IP, "
+          "Hostname must follow SITE-TYPE_OF_DEVICE-LOCATION-IP, "
           + "e.g. VAR-SW-LOCATION-22";
       }
     }
@@ -178,12 +178,8 @@ openpyxl
 
 ## Configuration
 
-Credentials are read from environment variables and are **never stored in the code**:
+Credentials are provided through user input.
 
-```bash
-export RESTCONF_USER='your_user'
-read -s RESTCONF_PASS && export RESTCONF_PASS
-```
 
 ### Inventory file (`inventory.xlsx`)
 
@@ -231,7 +227,7 @@ Aborting the script. Nothing was changed on the device
 
 ## Testing
 
-The tool was tested against the **Cisco DevNet IOS-XE always-on sandbox**.
+The tool was tested against the **Cisco DevNet IOS XE Always-On Sandbox** and a **real Cisco Catalyst 9300 switch**.
 
 ---
 

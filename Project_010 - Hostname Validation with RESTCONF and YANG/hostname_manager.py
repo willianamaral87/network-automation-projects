@@ -173,14 +173,15 @@ def main():
         for device in devices:
             IP = device['IP']
 
-            ##time.sleep(15)
+            ##
 
             # WARNING: this PATCH CHANGES the hostname on the switch.
             # It is here only for lab tests. Option 1 should only collect the hostname.
             
-            #-----new_hostname = device["new_hostname"]
-            #-----payload = {"Cisco-IOS-XE-native:hostname": new_hostname}
-            #-----restconf_patch(IP, user, pwd, HOSTNAME_PATH, payload)
+            #-----
+            new_hostname = device["new_hostname"]
+            payload = {"Cisco-IOS-XE-native:hostname": new_hostname}
+            restconf_patch(IP, user, pwd, HOSTNAME_PATH, payload)
 
             # Read the current hostname from the switch (RESTCONF GET)
             data = restconf_get(IP, user, pwd, HOSTNAME_PATH)
@@ -194,6 +195,9 @@ def main():
 
             # Add [IP, hostname] to the list; it is used to create the Excel file
             output_export.append([IP, current])
+
+
+            time.sleep(7)
 
         # Ask if the user wants to export the result to Excel
         option_1 = input("\nWould you like to export the output to Excel? (Y to confirm) ")
