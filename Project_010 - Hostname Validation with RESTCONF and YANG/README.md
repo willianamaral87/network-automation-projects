@@ -227,7 +227,13 @@ Aborting the script. Nothing was changed on the device
 
 ## Testing
 
-The tool was tested against the **Cisco DevNet IOS XE Always-On Sandbox** and a **real Cisco Catalyst 9300 switch**.
+The tool was tested against:
+
+- **[Cisco DevNet Catalyst 8000 Always-On Sandbox](https://devnetsandbox.cisco.com/DevNet/environments/RsIUuBQY3YjF)**: a free, always-available IOS-XE lab from Cisco DevNet with RESTCONF enabled, so no reservation is needed
+- **A real Cisco Catalyst 9300 switch**
+
+To try it yourself, add the sandbox's IP or FQDN to `inventory.xlsx` and enter the credentials shown on the sandbox page when the script prompts for them. 
+At the moment, the credentials are hardcoded in the script, so you don't need to type them. It will be removed soon.
 
 ### Simulating multiple devices with a single switch
 
