@@ -161,7 +161,7 @@ def main():
     if option in (1, 3):
         #user, pwd = get_credentials()
         user = "willian.amaral.ti"
-        pwd = "EB20m_9zTd4Wg_"
+        pwd = "6wzpY4O4__TLz"
 
     # OPTION 1 - COLLECT THE HOSTNAME
     # Reads the current hostname of each switch listed in inventory.xlsx.
