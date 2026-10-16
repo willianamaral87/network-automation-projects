@@ -178,11 +178,17 @@ def main():
             # WARNING: this PATCH CHANGES the hostname on the switch.
             # It is here only for lab tests. Option 1 should only collect the hostname.
             
-            #-----
+            #------------------------------
+                    # Since I'm testing this script with a single device, this section reads the
+                    # inventory file and changes the hostname on each iteration to simulate
+                    # multiple devices on the network.
+                    # If you're using more than one device, comment out the 3 lines below.
+
             new_hostname = device["new_hostname"]
             payload = {"Cisco-IOS-XE-native:hostname": new_hostname}
             restconf_patch(IP, user, pwd, HOSTNAME_PATH, payload)
-
+            #------------------------------
+            
             # Read the current hostname from the switch (RESTCONF GET)
             data = restconf_get(IP, user, pwd, HOSTNAME_PATH)
 

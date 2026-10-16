@@ -229,6 +229,16 @@ Aborting the script. Nothing was changed on the device
 
 The tool was tested against the **Cisco DevNet IOS XE Always-On Sandbox** and a **real Cisco Catalyst 9300 switch**.
 
+### Simulating multiple devices with a single switch
+
+Because testing was done with one switch, the script simulates multiple devices:
+it reads the inventory file and changes the switch's hostname on each iteration,
+as if each row were a different device.
+
+If you're running it against more than one device, comment out the 3 lines in
+`hostname_manager.py` marked with the comment that starts with
+*"Since I'm testing this script with a single device..."*.
+
 ---
 
 ## Roadmap
