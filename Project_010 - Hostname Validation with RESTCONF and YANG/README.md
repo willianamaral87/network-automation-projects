@@ -101,7 +101,7 @@ deviation "/ios:native/ios:hostname" {
       pattern '[A-Z]{3}-(SW|RT|FW)-[A-Z]{2,12}-'
             + '([1-9][0-9]?|1[0-9]{2}|2[0-4][0-9]|25[0-4])' {
         error-message
-          "Hostname must follow SITE-TYPE_OF_DEVICE-LOCATION-IP, "
+          "Hostname must follow SITE-TYPE_OF_DEVICE-LOCATION-LAST_OCTET_OF_IP_ADDRESS, "
           + "e.g. VAR-SW-LOCATION-22";
       }
     }
