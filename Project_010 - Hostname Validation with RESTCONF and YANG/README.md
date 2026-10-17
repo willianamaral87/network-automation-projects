@@ -249,11 +249,11 @@ If you're running it against more than one device, comment out the 3 lines in
 
 ## Roadmap
 
-- [ ] Option 4: save the running configuration (`cisco-ia:save-config` RPC)
-- [ ] Dry-run mode that shows the changes without applying them
-- [ ] Parallel execution for large inventories
-- [ ] Logging to a file for audit trails
-- [ ] Unit tests for the validation logic
+- [ ] Option 4: save the running configuration (`cisco-ia:save-config` RPC).
+- [ ] Dry-run mode that shows the changes without applying them.
+- [ ] Parallel execution for large inventories.
+- [ ] Logging to a file for audit trails.
+- [ ] Unit tests for the validation logic.
 - [ ] Backup of the device configuration. 
 
 ---
