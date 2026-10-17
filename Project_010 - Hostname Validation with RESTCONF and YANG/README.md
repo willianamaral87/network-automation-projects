@@ -254,6 +254,7 @@ If you're running it against more than one device, comment out the 3 lines in
 - [ ] Parallel execution for large inventories
 - [ ] Logging to a file for audit trails
 - [ ] Unit tests for the validation logic
+- [ ] Backup of the device configuration.
 
 ---
 
